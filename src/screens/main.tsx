@@ -20,7 +20,7 @@ export default function MainScreen() {
       flex={1}
     >
       <VStack space={5} alignItems="center">
-        <Box>
+        <Box p={10} bg={useColorModeValue('red.500', 'yellow.500')}>
           <Text>Hello</Text>
         </Box>
         <ThemeToggle />
