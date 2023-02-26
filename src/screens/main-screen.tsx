@@ -16,6 +16,8 @@ import TaskItem from '../components/task-item'
 
 export default function MainScreen() {
   const [checked, setChecked] = useState(false)
+  const [subject, setSubject] = useState('Task Item')
+  const [isEditing, setIsEditing] = useState(false)
   const handlePressCheckBox = useCallback(() => {
     setChecked(prev => !prev)
   }, [])
@@ -27,9 +29,13 @@ export default function MainScreen() {
     >
       <VStack space={5} alignItems="center" w="full">
         <TaskItem
+          isEditing={isEditing}
           isDone={checked}
           onToggleCheckbox={handlePressCheckBox}
-          subject="Task Item"
+          subject={subject}
+          onPressLabel={() => setIsEditing(true)}
+          onChangeSubject={setSubject}
+          onFinishEditing={() => setIsEditing(false)}
         />
         <Box
           borderRadius={10}
