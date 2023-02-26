@@ -1,7 +1,6 @@
 import React, { useEffect, memo } from 'react'
 import Animated, {
   Easing,
-  EasingFunctionFactory,
   useSharedValue,
   useAnimatedProps,
   withTiming,
