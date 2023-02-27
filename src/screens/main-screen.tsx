@@ -1,19 +1,11 @@
 import React, { useCallback, useState } from 'react'
-import {
-  Center,
-  VStack,
-  themeTools,
-  useTheme,
-  useColorMode,
-  useColorModeValue,
-  Fab,
-  Icon
-} from 'native-base'
+import { VStack, useColorModeValue, Fab, Icon } from 'native-base'
 import { AntDesign } from '@expo/vector-icons'
 import AnimatedColorBox from '../components/animated-color-box'
-import ThemeToggle from '../components/theme-toggle'
 import TaskList from '../components/task-list'
 import shortid from 'shortid'
+import MastHead from '../components/masthead'
+import NavBar from '../components/navbar'
 
 const initialData = [
   {
@@ -23,7 +15,7 @@ const initialData = [
   },
   {
     id: shortid.generate(),
-    subject: 'Refine navigation architecture in feature branch',
+    subject: 'Refine navigation architecture',
     done: false
   }
 ]
@@ -65,7 +57,7 @@ export default function MainScreen() {
       const newData = prevData.filter(i => i !== item)
       return newData
     })
-  })
+  }, [])
 
   return (
     <AnimatedColorBox
@@ -73,7 +65,20 @@ export default function MainScreen() {
       bg={useColorModeValue('warmGray.50', 'primary.900')}
       w="full"
     >
-      <VStack space={5} alignItems="center" w="full">
+      <MastHead
+        title="Welcome to TaskFlow!"
+        image={require('../assets/masthead-5-edit.png')}
+      >
+        <NavBar />
+      </MastHead>
+      <VStack
+        space={1}
+        bg={useColorModeValue('warmGray.50', 'primary.900')}
+        mt="-20px"
+        borderTopLeftRadius="20px"
+        borderTopRightRadius="20px"
+        pt="20px"
+      >
         <TaskList
           data={data}
           onToggleItem={handleToggleTaskItem}
@@ -83,8 +88,6 @@ export default function MainScreen() {
           onRemoveItem={handleRemoveItem}
           editingItemId={editingItemId}
         />
-
-        <ThemeToggle />
       </VStack>
       <Fab
         position="absolute"
