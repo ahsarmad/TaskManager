@@ -6,6 +6,7 @@ import TaskList from '../components/task-list'
 import shortid from 'shortid'
 import MastHead from '../components/masthead'
 import NavBar from '../components/navbar'
+import * as Animatable from 'react-native-animatable'
 
 const initialData = [
   {
@@ -65,12 +66,14 @@ export default function MainScreen() {
       bg={useColorModeValue('warmGray.50', 'primary.900')}
       w="full"
     >
-      <MastHead
-        title="Welcome to TaskFlow!"
-        image={require('../assets/masthead-5-edit.png')}
-      >
-        <NavBar />
-      </MastHead>
+      <Animatable.View animation="zoomIn">
+        <MastHead
+          title="Welcome to TaskFlow!"
+          image={require('../assets/masthead-5-edit.png')}
+        >
+          <NavBar />
+        </MastHead>
+      </Animatable.View>
       <VStack
         flex={1}
         space={1}

@@ -8,7 +8,8 @@ import {
   Image,
   useColorModeValue
 } from 'native-base'
-import { Feather } from '@expo/vector-icons'
+import { AntDesign, Ionicons } from '@expo/vector-icons'
+import * as Animatable from 'react-native-animatable'
 import AnimatedColorBox from '../components/animated-color-box'
 import NavBar from '../components/navbar'
 import MastHead from '../components/masthead'
@@ -21,12 +22,15 @@ const AboutScreen = () => {
       bg={useColorModeValue('warmGray.50', 'warmGray.900')}
       w="full"
     >
-      <MastHead
-        title="About this app"
-        image={require('../assets/masthead-3.png')}
-      >
-        <NavBar />
-      </MastHead>
+      <Animatable.View animation="zoomIn">
+        <MastHead
+          title="About this app"
+          image={require('../assets/masthead-3.png')}
+        >
+          <NavBar />
+        </MastHead>
+      </Animatable.View>
+
       <ScrollView
         flex={1}
         borderTopLeftRadius="20px"
@@ -40,20 +44,38 @@ const AboutScreen = () => {
           <Box alignItems="center">
             <Image
               source={require('../assets/profile-pic.png')}
-              borderRadius="full"
+              borderRadius="25"
               resizeMode="cover"
-              w={150}
-              h={150}
+              w={140}
+              h={140}
               alt="author"
+              mb="5"
             />
             <Text fontSize="md" w="full">
-              This is a React Native task managing application built using Expo,
-              NativeBase, Reanimated, Moti, and various other libraries/
-              frameworks. The source code can be found on my Github linked
-              below!
+              Hi! My name is Sarmad and this is a React Native task managing
+              application I built using Expo, NativeBase, Reanimated, Moti, and
+              various other libraries & frameworks. {'\n'}
+              {'\n'}If you're interested in this project, the source code can be
+              found on the Github Repository linked below!
             </Text>
-            <LinkButton colorScheme="blue" size="lg" borderRadius="full">
-              Take me to the Repository
+            <LinkButton
+              colorScheme="purple"
+              size="lg"
+              w="full"
+              borderRadius="10"
+              mt="10"
+              href="https://github.com/ahsarmad/TaskManager"
+              leftIcon={
+                <Icon
+                  as={AntDesign}
+                  name="github"
+                  size="lg"
+                  opacity={0.8}
+                  mr="2"
+                />
+              }
+            >
+              Take me to the Repo
             </LinkButton>
           </Box>
         </VStack>
