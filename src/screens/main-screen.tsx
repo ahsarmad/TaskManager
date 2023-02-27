@@ -1,5 +1,5 @@
 import React, { useCallback, useState } from 'react'
-import { VStack, useColorModeValue, Fab, Icon } from 'native-base'
+import { ScrollView, VStack, useColorModeValue, Fab, Icon } from 'native-base'
 import { AntDesign } from '@expo/vector-icons'
 import AnimatedColorBox from '../components/animated-color-box'
 import TaskList from '../components/task-list'
@@ -15,7 +15,7 @@ const initialData = [
   },
   {
     id: shortid.generate(),
-    subject: 'Refine navigation architecture',
+    subject: 'Make task managing app',
     done: false
   }
 ]
@@ -72,6 +72,7 @@ export default function MainScreen() {
         <NavBar />
       </MastHead>
       <VStack
+        flex={1}
         space={1}
         bg={useColorModeValue('warmGray.50', 'primary.900')}
         mt="-20px"
